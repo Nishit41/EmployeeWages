@@ -9,19 +9,19 @@ public class EmployeeWages {
          static int partTimeHour = 4;
          public static void main(String[] args){
          System.out.println("welcome to Employee Wages");
-         int attendenceCheck = (int)(Math.random()*10%3);
-         if( attendenceCheck == IS_PRESENT )
+         int attendenceCheck = (int)Math.floor((Math.random()*10)) % 3;
+         switch( attendenceCheck )
          {
-            System.out.println("Employee is Present for fullday");
-            System.out.println("Daily Employee Wage"+ wagePerHour*fullDayHour);
-         }
-         else if (attendenceCheck == IS_PARTTIME) {
-            System.out.println("Employee is Part time");
-            System.out.println("part time wage is =>"+" "+partTimeHour*wagePerHour);
-
-         }
-         else {
-           System.out.println("Employee is absent");
+             case IS_PRESENT:
+             System.out.println("Employee is Present for fullday");
+             System.out.println("Daily Employee Wage"+ wagePerHour*fullDayHour);
+             break;
+             case  IS_PARTTIME:
+             System.out.println("Employee is Part time");
+             System.out.println("part time wage is =>"+" "+partTimeHour*wagePerHour);
+             break;
+             default:
+             System.out.println("Employee is absent");
          }
      }
 }
