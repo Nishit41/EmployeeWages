@@ -9,12 +9,13 @@ public class EmployeeWages {
     public static int monthlyWagesAsFullTime = 0;
     public static int monthlyWagesPartTime = 0;
     public static int dailyEmployeeWages;
+    public static int workingHour=0;
     static int count;
 
     public static void main(String[] args) {
         System.out.println("welcome to Employee Wages");
         int day = 1;
-        while (day <= 20)
+        while (day <= 20 && workingHour<=100 )
         {
             int attendenceCheck = (int) Math.floor((Math.random() * 10)) % 3;
             switch (attendenceCheck)
@@ -25,7 +26,9 @@ public class EmployeeWages {
                     System.out.println("Daily Employee Wage" + wagePerHour * fullDayHour);
                     dailyEmployeeWages = wagePerHour * fullDayHour;
                     monthlyWagesAsFullTime = monthlyWagesAsFullTime + dailyEmployeeWages;
+                    workingHour = workingHour+8;
                     day++;
+                    System.out.println("workingHour =>"+" "+workingHour);
                     System.out.println("monthly wages of employee =>" + monthlyWagesAsFullTime);
                     break;
                 case IS_PARTTIME:
@@ -34,6 +37,8 @@ public class EmployeeWages {
                     monthlyWagesPartTime = monthlyWagesPartTime + dailyEmployeeWages;
                     System.out.println("days Of month(Employee is Present) =>" + day);
                     day++;
+                    workingHour = workingHour+4;
+                    System.out.println("WorkingHour is"+" "+workingHour);
                     System.out.println("part time wage is of one day=>" + " " + partTimeHour * wagePerHour);
                     System.out.println("monthly wages of employee =>" + monthlyWagesPartTime);
                     break;
@@ -44,5 +49,6 @@ public class EmployeeWages {
         }
         int totalWagesForMonth = monthlyWagesPartTime+monthlyWagesAsFullTime;
         System.out.println("totalWagesForMonth=>"+totalWagesForMonth);
+        System.out.println("workingHour =>"+" "+workingHour);
     }
 }
