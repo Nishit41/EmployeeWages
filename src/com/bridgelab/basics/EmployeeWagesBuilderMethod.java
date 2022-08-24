@@ -2,9 +2,20 @@ package com.bridgelab.basics;
 public class EmployeeWagesBuilderMethod {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-
-    public static int computeEmpWage(String Company ,int empRatePerHrs , int numOfWorkingDays , int maxHoursPerMonth)
+    private final String company;
+    private final int empRatePerHrs;
+    private final int numOfWorkingDays;
+    private final int maxHoursPerMonth;
+    private int totalEmpwage;
+    public EmployeeWagesBuilderMethod(String company , int empRatePerHrs , int numOfWorkingDays , int maxHoursPerMonth)
     {
+       this.company = company;
+       this.empRatePerHrs = empRatePerHrs;
+       this.numOfWorkingDays = numOfWorkingDays;
+       this.maxHoursPerMonth = maxHoursPerMonth;
+
+    }
+    public void computeEmpWage() {
         int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
         while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
             totalWorkingDays++;
@@ -22,14 +33,23 @@ public class EmployeeWagesBuilderMethod {
             totalEmpHrs += empHrs;
             System.out.println("Day=" + totalWorkingDays + "EmpHrs" + empHrs);
         }
-        int totalEmpwage = totalEmpHrs * empRatePerHrs;
-        System.out.println("Total EmpWage for Company is:" + totalEmpwage);
-        return totalEmpwage;
+         totalEmpwage = totalEmpHrs * empRatePerHrs;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeWagesBuilderMethod{" +
+                "totalEmpwage=" + totalEmpwage +
+                '}';
     }
 
     public static void main(String[] args) {
-        computeEmpWage("Akasa", 20,2,10);
-        computeEmpWage("adani",10,4,20);
+        EmployeeWagesBuilderMethod akasa = new EmployeeWagesBuilderMethod("akasa",20,2,10);
+        EmployeeWagesBuilderMethod flipKart = new EmployeeWagesBuilderMethod("flipkart",10,4,20);
+        akasa.computeEmpWage();
+        System.out.println(akasa);
+        flipKart.computeEmpWage();
+        System.out.println(flipKart);
     }
 }
 
